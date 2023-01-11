@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.formm {
+    /* margin-left: 20vw; */
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 20px;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.formComponent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+}
+
+.formComponent label {
+    width: 100px;
+}
+
+.formComponent textarea {
+    width: 400px;
+}
+
+.formComponent input {
+    width: 400px;
+}
+
+.tablee{
+    overflow-y: auto;
+}

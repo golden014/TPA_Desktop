@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.navbarContainer{
+    background-color: #010106;
+    display: flex;
+    justify-content:space-between;
+    padding: 1.2% 2.4% 1.2% 2.4%;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.navbarKiri{ /* atas  */
+    display: flex;
+    height: 10%;
+}
+
+.navbarKanan{ /* bawah  */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 90%;
+}
+
+.itemsNavbar{
+    width: 100%;
+    display: flex;
+    /* justify-content: center; */
+    row-gap: 10px;
+    flex-direction: column;
+}
+
+.itemsNavbar li{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.items{
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+p{
+    font-family: 'Roboto', sans-serif;
+    text-transform: none;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+}

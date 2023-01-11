@@ -1,0 +1,15 @@
+
+.accOrReject{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.acc{
+    background-color: red;
+}
+
+.accOrReject button:hover{
+
+}
+
