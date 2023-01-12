@@ -19,6 +19,8 @@ import SubmitResign from './jsx/SubmitResign';
 import UpdateResigntionLetter from "./jsx/UpdateResignationLetter";
 import AddAdvertisingPartner from "./jsx/AddAdvertisingPartner";
 import AddFoodSupplier from './jsx/AddFoodSupplier';
+import AddMovieProducer from './jsx/AddMovieProducer';
+import AddMovie from './jsx/AddMovie';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -51,6 +53,10 @@ root.render(
 
         <Route exact path="/addAdsPartner" element={<AddAdvertisingPartner/>}></Route>
         <Route exact path="/addFoodSupplier" element={<AddFoodSupplier/>}></Route>
+        <Route exact path="/addMovieProducer" element={<AddMovieProducer/>}></Route>
+
+        <Route exact path="/addMovie" element={<AddMovie/>}></Route>
+
 
 
       </Routes>

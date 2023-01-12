@@ -73,3 +73,9 @@ button {
     padding: 5px 5px 5px 5px;
     cursor: pointer;
 }
+
+.formComponent select{
+    width: 400px;
+    height: auto;
+}
+

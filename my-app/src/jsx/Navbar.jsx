@@ -31,6 +31,8 @@ function Navbar() {
                     <li><p onClick={(e) => history("/updateResignLetter")}>Update Resignation Letter</p></li>
                     <li><p onClick={(e) => history("/addAdsPartner")}>Add Advertisement Partner</p></li>
                     <li><p onClick={(e) => history("/addFoodSupplier")}>Add Food Supplier</p></li>
+                    <li><p onClick={(e) => history("/addMovieProducer")}>Add Movie Producer</p></li>
+                    <li><p onClick={(e) => history("/addMovie")}>Add Movie</p></li>
 
 
 

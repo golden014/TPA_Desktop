@@ -6,7 +6,7 @@ import DataTable from "react-data-table-component"
 import "../css/WarningLetter.css"
 
 
-function AddAdvertisingPartner() {
+function AddMovieProducer() {
 
       // const [issuedDate, setIssuedDate] = useState("");
    
@@ -21,7 +21,7 @@ function AddAdvertisingPartner() {
     
     
     
-    const advertisingPartnerRef = collection(db, "AdvertisingPartners");
+    const advertisingPartnerRef = collection(db, "MovieProducers");
     const [adsPartner, setAdsPartner] = useState([]);
 
     const [name, setName] = useState("");
@@ -81,7 +81,7 @@ function AddAdvertisingPartner() {
             </div>
 
             <div className="right">
-                <h2>Add Advertising Partner</h2>
+                <h2>Add Movie Producer</h2>
                 {/* <div className="tablee">
                     <DataTable columns={columns} data={data} />
                 </div> */}
@@ -121,4 +121,4 @@ function AddAdvertisingPartner() {
     )
 }
 
-export default AddAdvertisingPartner;
+export default AddMovieProducer;
