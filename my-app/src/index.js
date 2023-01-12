@@ -21,6 +21,8 @@ import AddAdvertisingPartner from "./jsx/AddAdvertisingPartner";
 import AddFoodSupplier from './jsx/AddFoodSupplier';
 import AddMovieProducer from './jsx/AddMovieProducer';
 import AddMovie from './jsx/AddMovie';
+import SelectMovieToShow from './jsx/SelectMovieToShow';
+import GenerateSchedule from './jsx/SelectMovieToShow';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -56,6 +58,7 @@ root.render(
         <Route exact path="/addMovieProducer" element={<AddMovieProducer/>}></Route>
 
         <Route exact path="/addMovie" element={<AddMovie/>}></Route>
+        <Route exact path="/selectMovieToShow" element={<SelectMovieToShow/>}></Route>
 
 
 
