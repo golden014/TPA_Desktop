@@ -77,7 +77,7 @@ function ViewEmployee() {
                 <Navbar/>   
             </div>
 
-            <div className="rightt">
+            <div className="right">
                 <div className="title2">
                     <h2 className="employeeList">Employee List</h2>
                 </div>

@@ -33,6 +33,7 @@ h2{
     align-items: center;
     flex-direction: column;
     row-gap: 30px;
+    width: 80vw;
 
 }
 
@@ -43,12 +44,12 @@ h2{
     /* width: 100%; */
 }
 
-.addEmployee {
+/* .addEmployee {
     margin-left: 30vw;
-}
+} */
 
 .form{
-    margin-left: 30vw;
+    /* margin-left: 30vw; */
     /* width: 10vw; */
     display: flex;
     flex-direction: column;

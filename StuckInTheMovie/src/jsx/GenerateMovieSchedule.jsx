@@ -49,7 +49,8 @@ function GenerateMovieSchedule() {
         {
             name: "Title",
             selector: (row) => row.Title,
-            sortable: true
+            sortable: true,
+            width: "200px"
         },
         {
             name: "Producer",
@@ -175,7 +176,8 @@ function GenerateMovieSchedule() {
                 <Navbar/>
             </div>
 
-            <div className="rightGen">
+            <div className="right">
+                <h2>Available Movies</h2>
                 <DataTable columns={columns} data={moviesFiltered}
                 expandableRows
                 expandableRowsComponent={ExpandedComponent}

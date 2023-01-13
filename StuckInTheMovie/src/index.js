@@ -26,6 +26,11 @@ import GenerateSchedule from './jsx/SelectMovieToShow';
 import GenerateMovieSchedule from './jsx/GenerateMovieSchedule';
 import AddStudio from './jsx/AddStudio';
 import ViewStudio from './jsx/ViewStudio';
+import AddMember from './jsx/AddMember';
+import ViewAllMember from './jsx/ViewAllMember';
+import Print from "./jsx/Print"
+import ViewSchedule from './jsx/ViewSchedule';
+import ViewTodaysSchedule from './jsx/ViewTodaysSchedule';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -64,9 +69,18 @@ root.render(
         <Route exact path="/addMovie" element={<AddMovie/>}></Route>
         <Route exact path="/selectMovieToShow" element={<SelectMovieToShow/>}></Route>
         <Route exact path="/generateMovieSchedule" element={<GenerateMovieSchedule/>}></Route>
+        <Route exact path="/viewSchedule" element={<ViewSchedule/>}></Route>
+        <Route exact path="/viewTodaysSchedule" element={<ViewTodaysSchedule/>}></Route>
 
+        
         <Route exact path="/addStudio" element={<AddStudio/>}></Route>
         <Route exact path="/viewStudio" element={<ViewStudio/>}></Route>
+
+        <Route exact path="/addMember" element={<AddMember/>}></Route>
+        <Route exact path="/viewAllMember" element={<ViewAllMember/>}></Route>
+
+        <Route exact path="/print" element={<Print/>}></Route>
+
 
 
       </Routes>

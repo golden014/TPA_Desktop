@@ -5,6 +5,7 @@ import {db} from "../firebase-config"
 import {collection, getDocs} from "firebase/firestore"
 import "../css/ViewEmployee.css"
 import  QRCode from "react-qr-code"
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -35,6 +36,16 @@ function ViewFacilities() {
 
     }, []);
 
+    const history = useNavigate();
+
+    const handlePrint = (e, content) => {
+        e.preventDefault();
+
+        const QRContent = content;
+  
+        history('/print', {state: {identifier: QRContent}});
+    }
+
     const columns = [
 
         {
@@ -64,6 +75,21 @@ function ViewFacilities() {
             name: "Condition",
             selector: (row) => row.Condition,
             sortable: true,
+        },
+        {
+            width: "220px",
+            name: "Action",
+            cell: (row) =>  {
+                return (
+                    <div className="accOrReject">
+                            <button className="rej" onClick={(e) => handlePrint(e, ("Name: " + row.EquipmentName + ", ID: " + row.id))}>Print QR</button>
+                            {/* </form> */}
+                    </div>
+                )
+          
+                
+            }
+            
         }
     ]
 
@@ -91,7 +117,7 @@ function ViewFacilities() {
                 <Navbar/>   
             </div>
 
-            <div className="rightt">
+            <div className="right">
                 <div className="title2">
                     <h2 className="employeeList">Facility List</h2>
                 </div>
