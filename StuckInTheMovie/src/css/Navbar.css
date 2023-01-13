@@ -77,3 +77,10 @@ p{
     flex-direction: column;
     row-gap: 30px;
 }
+
+.seatButton {
+    width: 4.5vw;
+    border-radius: 0%;
+    margin: 2px;
+}
+

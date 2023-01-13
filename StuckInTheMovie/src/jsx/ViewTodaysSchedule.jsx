@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { db } from "../firebase-config";
 import Navbar from "./Navbar"
 import DataTable from "react-data-table-component";
+import { useNavigate } from "react-router-dom";
 
 
 function ViewTodaysSchedule() {
@@ -54,6 +55,14 @@ function ViewTodaysSchedule() {
         }
     }
 
+    const history = useNavigate();
+
+    const handleSeat = (e, schedule) => {
+        e.preventDefault();
+
+        history('/viewSeat', {state: {identifier: schedule}});
+    }
+
 
     const columns = [
         {
@@ -85,6 +94,17 @@ function ViewTodaysSchedule() {
           selector: (row) => row.StudioID,
           width: "200px",
           sortable: true,
+        },
+        {
+            name: "Action",
+            cell: (row) => {
+                // console.log(row);
+                return (
+                    <div className="accOrReject">
+                        <button onClick={(e) => handleSeat(e, row)}>Seat</button>
+                    </div>
+                )
+            }
         }
       
         // {
