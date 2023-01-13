@@ -33,7 +33,7 @@ function SubmitPersonalLeave() {
     // const successMessage = "";
 
     const createPersonalLeave = async (e) => {
-        // e.preventDefault();
+        e.preventDefault();
 
         // let biggestID = 0;
         // console.log("biggest id " + biggestID);

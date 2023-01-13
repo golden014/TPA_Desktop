@@ -8,23 +8,11 @@ import Navbar from "./Navbar"
 function SelectMovieToShow(){
 
 
-    const [movies, setMovies] = useState([]);
-
-    const movieRef = collection(db, "Movies");
 
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     
     
-    useEffect(() => {
-
-        const getMovies = async () => {
-            const data = await getDocs(movieRef);
-
-            setMovies(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
-        }
-        getMovies();
-    }, []);
 
     const history = useNavigate();
     const next = (e) => {
@@ -32,7 +20,7 @@ function SelectMovieToShow(){
 
         sessionStorage.setItem("StartDate", startDate);
         sessionStorage.setItem("EndDate", endDate);
-        history("/");
+        history("/generateMovieSchedule");
     }
 
     return (

@@ -34,6 +34,8 @@ function Navbar() {
                             <li><p onClick={(e) => history("/addMovieProducer")}>Add Movie Producer</p></li>
                             <li><p onClick={(e) => history("/addMovie")}>Add Movie</p></li>
                             <li><p onClick={(e) => history("/selectMovieToShow")}>Select Movie To Show</p></li>
+                            <li><p onClick={(e) => history("/addStudio")}>Add Studio</p></li>
+                            <li><p onClick={(e) => history("/viewStudio")}>View Studio</p></li>
 
                          </ul>
 

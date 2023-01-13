@@ -23,6 +23,9 @@ import AddMovieProducer from './jsx/AddMovieProducer';
 import AddMovie from './jsx/AddMovie';
 import SelectMovieToShow from './jsx/SelectMovieToShow';
 import GenerateSchedule from './jsx/SelectMovieToShow';
+import GenerateMovieSchedule from './jsx/GenerateMovieSchedule';
+import AddStudio from './jsx/AddStudio';
+import ViewStudio from './jsx/ViewStudio';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -30,6 +33,7 @@ root.render(
   <React.StrictMode>
     <Router>
       <Routes>
+      <Route exact path="/tes" element={<Home />} ></Route>
         <Route exact path="/" element={<Login />} ></Route>
         <Route exact path="/addEmployee" element={<AddEmployee />} ></Route>
         {/* <Route exact path="/home" element={<Home />} ></Route> */}
@@ -59,7 +63,10 @@ root.render(
 
         <Route exact path="/addMovie" element={<AddMovie/>}></Route>
         <Route exact path="/selectMovieToShow" element={<SelectMovieToShow/>}></Route>
+        <Route exact path="/generateMovieSchedule" element={<GenerateMovieSchedule/>}></Route>
 
+        <Route exact path="/addStudio" element={<AddStudio/>}></Route>
+        <Route exact path="/viewStudio" element={<ViewStudio/>}></Route>
 
 
       </Routes>
