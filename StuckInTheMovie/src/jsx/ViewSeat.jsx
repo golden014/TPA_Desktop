@@ -1,6 +1,6 @@
 import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { db } from "../firebase-config";
 import Navbar from "./Navbar"
 
@@ -83,13 +83,61 @@ const ViewSeat = () => {
                 </div>
             )
         }
-
         return seatRowList;
     }
+    const [price, setPrice] = useState(0);
+    const [type, setType] = useState("");
+
+    const loopForType = () => {
+        console.log("masuk loop for type");
+        // console.log(data);
+        for (let i = 0; i<studio.length; i++) {
+            console.log("i = " + i);
+            console.log( studio[i]);
+            if (studio[i].ID === schedule.StudioID) {
+                console.log("dapetttt");
+                // setType(studio[i].Type);
+                return studio[i].Type;
+            }
+        }
+    }
+
+    const type1 = loopForType();
+    console.log(type1);
+
+    // loopForType;
+
+    
+    const getPrice = () => {
+        switch (type1) {
+            case "Regular":
+                return(50000)
+            case "Business":
+                return(65000);
+            case "VIP":
+                return(80000);
+            case "VVIP":
+                return(100000);
+            default:
+                return(-1);
+        }
+    }
+
+    const price1 = getPrice();
+    console.log(price1);
+
+
+
 
     console.log(seatCount);
 
+    const history = useNavigate();
 
+    const handleBuyTicket = (e, schedule, selectedSeat) => {
+        e.preventDefault();
+        
+        history("/ticketPayment", {state: {identifier: schedule, selectedSeat: selectedSeat, type: type1, price: price1}})
+    }
 
     return (
 
@@ -108,7 +156,7 @@ const ViewSeat = () => {
                     {getSeatList()}
                 </div>
 
-                <button> Buy Ticket(s) </button>
+                <button onClick={(e) => handleBuyTicket(e, schedule, selectedSeat)}> Buy Ticket(s) </button>
             </div>
         </div>
     )

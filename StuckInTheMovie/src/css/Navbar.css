@@ -84,3 +84,30 @@ p{
     margin: 2px;
 }
 
+.totalPrice {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.selectedSeatsTicket{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.movieDetails{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30vw;
+    flex-direction: column;
+}
+
+.movieReceipt{
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+}

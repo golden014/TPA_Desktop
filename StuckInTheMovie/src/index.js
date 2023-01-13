@@ -32,6 +32,7 @@ import Print from "./jsx/Print"
 import ViewSchedule from './jsx/ViewSchedule';
 import ViewTodaysSchedule from './jsx/ViewTodaysSchedule';
 import ViewSeat from './jsx/ViewSeat';
+import TicketPayment from './jsx/TicketPayment';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -83,6 +84,8 @@ root.render(
         <Route exact path="/print" element={<Print/>}></Route>
 
         <Route exact path="/viewSeat" element={<ViewSeat/>}></Route>
+
+        <Route exact path="/ticketPayment" element={<TicketPayment/>}></Route>
 
 
       </Routes>
