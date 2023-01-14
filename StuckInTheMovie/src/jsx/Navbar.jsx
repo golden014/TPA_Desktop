@@ -40,10 +40,11 @@ function Navbar() {
                             <li><p onClick={(e) => history("/viewAllMember")}>View All Member</p></li>
                             <li><p onClick={(e) => history("/viewSchedule")}>View Schedule</p></li>
                             <li><p onClick={(e) => history("/viewTodaysSchedule")}>View Todays Schedule</p></li>
+                            <li><p onClick={(e) => history("/submitDamagedEquipmentReport")}>Submit Damaged Equipment Report</p></li>
 
 
                          </ul>
-
+                <br /><br />
                          <p onClick={(e) => history("/")}>Sign Out</p>
                     </div>
                 );

@@ -1,7 +1,7 @@
 
 import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { db } from "../firebase-config";
 import Navbar from "./Navbar";
 
@@ -112,6 +112,15 @@ const TicketPayment = () => {
 
     // console.log(selectedSeat);
     // console.log(type);
+    const history = useNavigate();
+
+    const handleConfirm = (e, schedule, selectedSeat, payment) => {
+        e.preventDefault();
+        console.log("masuk handle confirm");
+        const temp = selectedSeat.length * pricee;
+        history("/createReceipt", {state: {schedule: schedule, selectedSeat: selectedSeat, price: temp, payment: payment}});
+    }
+
     return(
         <div className="bigContainer">
             <div className="left">
@@ -155,6 +164,8 @@ const TicketPayment = () => {
                     <option value="sopiPey"> Sopi Pey </option>
                     <option value="cash"> Cash </option>
                 </select>
+
+                <button onClick={(e) => handleConfirm(e, schedule, selectedSeat, payment)}>Confirm</button>
             </div>
         </div>
     )

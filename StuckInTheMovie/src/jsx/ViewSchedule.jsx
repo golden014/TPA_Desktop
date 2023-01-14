@@ -43,6 +43,12 @@ function ViewSchedule() {
 
     const columns = [
         {
+            name: "ID",
+            selector: (row) => row.ScheduleID,
+            sortable: true,
+            width: "70px"
+        },
+        {
             name: "Title",
             selector: (row) => row.MovieTitle,
             sortable: true,

@@ -75,6 +75,7 @@ function ViewFacilities() {
             name: "Condition",
             selector: (row) => row.Condition,
             sortable: true,
+            width: "200px"
         },
         {
             width: "220px",

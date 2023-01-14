@@ -132,12 +132,32 @@ function GenerateMovieSchedule() {
 
     const [schedule, setSchedule] = useState([]);
     const scheduleRef = collection(db, "MovieSchedules");
+    
 
     console.log("selected rows: ");
     console.log(selectedRows);
 
+    useEffect(() => {
+        const getEmployees = async () => {
+            const data = await getDocs(scheduleRef);
+            // console.log(data);
+            setSchedule(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+        }
+
+        getEmployees();
+    }, []);
+
     const generateSchedule = async (e) => {
         e.preventDefault();
+
+        let biggestID = 0;
+
+        //utk masukin id lagi
+        for (let  i = 0; i<schedule.length; i++) {
+            if (schedule[i].ID > biggestID) {
+                biggestID = schedule[i].ID;
+            }
+        }
 
         for (let i = 0; i<=dayRange; i++) {
             for (let j = 0; j<studioFiltered.length; j++) {
@@ -160,8 +180,11 @@ function GenerateMovieSchedule() {
                         StudioID: studioFiltered[j].ID,
                         Date: currDate,
                         AiringShift: k,
-                        Advertisement: ""
+                        Advertisement: "",
+                        ScheduleID: biggestID+1
                     });
+
+                    biggestID++;
 
                     // alert("Generate schedule from " + startDate +" to " + endDate + " success!");
                     // window.location = window.location;
