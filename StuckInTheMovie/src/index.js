@@ -36,6 +36,14 @@ import TicketPayment from './jsx/TicketPayment';
 import CreateReceipt from './jsx/CreateReceipt';
 import SubmitDamagedEquipmentReport from './jsx/SubmitDamagedEquipmentReport';
 import UpdateDamagedEquipmentReport from './jsx/UpdateDamagedEquipmentReport';
+import Default from './jsx/Default';
+import AddPromosOrEvent from './jsx/AddPromosOrEvent';
+import ViewAdsPartner from './jsx/ViewAdsPartner';
+import ViewMovieProducers from './jsx/ViewMovieProducers';
+import ViewPromosData from './jsx/ViewPromosData';
+import CreateMemberCard from './jsx/CreateMemberCard';
+import ChangePassword from './jsx/ChangePassword';
+import ViewEmployeeReport from './jsx/ViewEmployeeReport';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -68,8 +76,14 @@ root.render(
         <Route exact path="/updateResignLetter" element={<UpdateResigntionLetter/>}></Route>
 
         <Route exact path="/addAdsPartner" element={<AddAdvertisingPartner/>}></Route>
+        <Route exact path="/viewAdsPartner" element={<ViewAdsPartner/>}></Route>
+
+       
         <Route exact path="/addFoodSupplier" element={<AddFoodSupplier/>}></Route>
+        
         <Route exact path="/addMovieProducer" element={<AddMovieProducer/>}></Route>
+        <Route exact path="/viewMovieProducers" element={<ViewMovieProducers/>}></Route>
+
 
         <Route exact path="/addMovie" element={<AddMovie/>}></Route>
         <Route exact path="/selectMovieToShow" element={<SelectMovieToShow/>}></Route>
@@ -95,6 +109,16 @@ root.render(
         <Route exact path="/submitDamagedEquipmentReport" element={<SubmitDamagedEquipmentReport/>}></Route>
         <Route exact path="/updateDamagedEquipmentReport" element={<UpdateDamagedEquipmentReport/>}></Route>
 
+        <Route exact path="/default" element={<Default/>}></Route>
+
+        <Route exact path="/addPromos" element={<AddPromosOrEvent/>}></Route>
+        <Route exact path="/viewPromosData" element={<ViewPromosData/>}></Route>
+
+        <Route exact path="/createMemberCard" element={<CreateMemberCard/>}></Route>
+
+        <Route exact path="/changePassword" element={<ChangePassword/>}></Route>
+
+        <Route exact path="/viewEmployeeReport" element={<ViewEmployeeReport/>}></Route>
 
       </Routes>
     </Router>

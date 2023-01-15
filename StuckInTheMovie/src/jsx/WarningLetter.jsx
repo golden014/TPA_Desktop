@@ -90,7 +90,7 @@ function WarningLetter() {
     }
 
     const createWarningLetter = async (e) => {
-        // e.preventDefault();
+        e.preventDefault();
 
         // let biggestID = 0;
         // console.log("biggest id " + biggestID);
@@ -107,6 +107,7 @@ function WarningLetter() {
         await addDoc(wLetterRef, {EmployeeID: id, DateIssued: date, Reason: reason, Status: status, Name: name});
         // successMessage = "Success !";
         alert("Success !");
+        window.location = window.location;
     }
 
     

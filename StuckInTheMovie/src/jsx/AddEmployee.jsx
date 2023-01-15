@@ -22,12 +22,15 @@ function AddEmployee() {
     const [status, setStatus] = useState("Active");
     const [startWork, setStartWork] = useState(date);
     const [DOB, setDOB] = useState("");
+    const [workingShift, setWorkingShift] = useState("");
+    const [salary, setSalary] = useState("");
     // const [ID, setID] = useState(0);
 
 
     const [employees, setEmployees] = useState([]);
 
     const empCollectionRef = collection(db, "employee");
+    const workingShiftRef = collection(db, "WorkingShifts");
 
     const registUser = async () => {
         
@@ -59,8 +62,34 @@ function AddEmployee() {
 
         // setID(biggestID + 1);
 
-        await addDoc(empCollectionRef, {Name: newName, Email: newEmail, PhoneNumber: newPhoneNum, Address: address, BankAccount: bankAcc, Status: status, StartWork: startWork, Role: role, DateOfBirth: DOB, ID: biggestID+1});
+        await addDoc(empCollectionRef, {
+            Name: newName, 
+            Email: newEmail, 
+            PhoneNumber: newPhoneNum, 
+            Address: address, 
+            BankAccount: bankAcc, 
+            Status: status, 
+            StartWork: startWork, 
+            Role: role, 
+            DateOfBirth: DOB, 
+            ID: biggestID+1,
+            Salary: salary
+        });
+
+        await addDoc(workingShiftRef, {
+            EmployeeID: biggestID+1,
+            Monday: workingShift,
+            Tuesday: workingShift,
+            Wednesday: workingShift,
+            Thursday: workingShift,
+            Friday: workingShift,
+            Saturday: workingShift,
+            Sunday: workingShift
+        })
         console.log("aaaa");
+
+        alert("Success");
+        window.location = window.location;
     }
 
     useEffect(() => {
@@ -71,8 +100,6 @@ function AddEmployee() {
         }
 
         getEmployees();
-
-
     }, []);
 
     return (
@@ -105,7 +132,15 @@ function AddEmployee() {
                             <option value="Kitchen Division Cafe Dept">Kitchen Division Cafe Dept</option>
 
                         </select>
+                        <select onChange={(event) => {setWorkingShift(event.target.value)}}>
+                            <option value="" selected disabled hidden>default working shift</option>
+                            <option value="Morning">Morning</option>
+                            <option value="Night">Night</option>
+                        </select>
+
                         <input type="text" placeholder="email" onChange={(event) => {setNewEmail(event.target.value)}}/>
+
+                        <input type="number" placeholder="starting salary" onChange={(event) => {setSalary(event.target.value)}}/>
                         <input type="date" onChange={(event) => {setDOB(event.target.value)}}/>
                         <input type="text" placeholder="address" onChange={(event) => {setNewAddress(event.target.value)}}/>
                         <input type="text" placeholder="phoneNumber" onChange={(event) => {setNewPhoneNum(event.target.value)}}/>

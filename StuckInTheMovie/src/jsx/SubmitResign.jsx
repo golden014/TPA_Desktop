@@ -34,7 +34,7 @@ function SubmitResign() {
     // const successMessage = "";
 
     const createResignationLetter = async (e) => {
-        // e.preventDefault();
+        e.preventDefault();
 
         // let biggestID = 0;
         // console.log("biggest id " + biggestID);

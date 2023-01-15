@@ -5,6 +5,7 @@ import {collection, getDocs, addDoc} from "firebase/firestore"
 import Navbar from "./Navbar"
 import "../css/AddEmployee.css"
 import {createUserWithEmailAndPassword} from "firebase/auth"
+import { useNavigate } from "react-router-dom"
 
 
 function AddMember() {
@@ -37,32 +38,49 @@ function AddMember() {
     const currDate = current.toLocaleDateString("en-CA");
     const membershipType = "Silver";
     const points = 0;
+    const history = useNavigate();
 
-    const createFacilities = async (e) => { 
+    const beforeCreateFacilities = async (e) => {
         e.preventDefault();
-
-        // console.log(DOB);
-        // setStatus("Active");
-        // setStartWork(currDate.getDate);
-
         let biggestID = 0;
-        console.log("biggest id " + biggestID);
 
         for (let  i = 0; i<facilities.length; i++) {
             if (facilities[i].ID > biggestID) {
                 biggestID = facilities[i].ID;
             }
-            console.log("i = " + i + ", id = " + facilities[i].ID);
         }
 
-        console.log("biggest id after " + biggestID);
+        createFacilities(biggestID);
+    }
+
+    const createFacilities = async (biggestID) => { 
+       
+
+        // console.log(DOB);
+        // setStatus("Active");
+        // setStartWork(currDate.getDate);
+
+     
+        // console.log("biggest id " + biggestID);
+
+        
+
+        // console.log("biggest id after " + biggestID);
 
         // setID(biggestID + 1);
 
         await addDoc(facilitiesRef, {ID: biggestID + 1, MemberName: memberName, DateJoin: currDate, MemberType: membershipType, Points: points});
        
-        alert("Success");
-        window.location = window.location;
+        history("/createMemberCard", {state: {
+            ID: (biggestID + 1),
+            Name: memberName,
+            DateJoin: currDate,
+            MemberType: membershipType 
+        }});
+
+        // alert("Success");
+        // window.location = window.location;
+
     }
 
     useEffect(() => {
@@ -97,7 +115,7 @@ function AddMember() {
                     </div>
 
                     <div className="formComponent">
-                        <button onClick={createFacilities}>Add New Member</button>
+                        <button onClick={beforeCreateFacilities}>Add New Member</button>
                     </div>
                 </form>
 

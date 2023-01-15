@@ -84,8 +84,8 @@ function Login() {
             // curr.setPhoneNum(data[i].PhoneNumber);
             // curr.setStartWork(data[i].StartWork);
             // curr.setStatus(data[i].Status);
-
-            history("/addEmployee");
+            console.log(sessionStorage.getItem("Role"));
+            history("/default");
 
             
             // password

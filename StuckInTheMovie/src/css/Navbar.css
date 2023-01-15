@@ -108,10 +108,37 @@ p{
     flex-direction: column;
 }
 
+.movieDetailss{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 40vh;
+    flex-direction: column;
+    border-style: solid;
+    border-color: #010106;
+    padding: 10px;
+}
+
 .movieReceipt{
     width: 100%;
     display: flex;
     justify-content:space-between;
+}
+
+.memberTitle{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.movieReceiptt{
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
 }
 
 .receipt{
@@ -131,4 +158,13 @@ p{
     width: 100vw;
     position: relative;
     justify-content: center;
+    border-style: dashed;
+    border-color: #010106;
+}
+
+.empComponent{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 341px;
 }

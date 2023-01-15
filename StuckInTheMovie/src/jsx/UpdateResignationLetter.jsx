@@ -13,6 +13,22 @@ function AcceptResignationLetter() {
 
     const terminationLetterRef = collection(db, "ResignationLetters");
 
+    const [empData, setEmpData] = useState([]);
+    const empRef = collection(db, "employee");
+
+
+    useEffect(() => {
+        const getTerminationLetters = async () => {
+            const data = await getDocs(empRef);
+            console.log("status: ", data.Status);
+            console.log(data);
+
+            // if (data.Status === "Waiting for Manager Approval") {
+                setEmpData(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+            // }
+        }
+        getTerminationLetters();
+    }, []);
 
     useEffect(() => {
         const getTerminationLetters = async () => {
@@ -30,12 +46,26 @@ function AcceptResignationLetter() {
     let history = useNavigate();
     
 
-    async function  accStatusHandler(e, id){
+    async function  accStatusHandler(e, id, empId){
         // e.preventDefault();
+        let idx = "";
+        for (let i = 0; i<empData.length; i++) {
+            if (empData[i].ID == empId) {
+                idx = empData[i].id;
+                break;
+            }
+        }
+
+        console.log(idx);
         
         await updateDoc(doc(db, "ResignationLetters", id), {
             Status: "Approved by Manager"
         } )
+
+
+        await updateDoc(doc(db, "employee", idx), {
+            Status: "Not Active (resigned)"
+        })
         // alert("Accept Success");
         // history("/accTerminationLetter");
         window.location = window.location;
@@ -97,7 +127,7 @@ function AcceptResignationLetter() {
                     return (
                         <div className="accOrReject">
                              {/* <form action=""> */}
-                                <button className="acc" onClick={(e) => accStatusHandler(e, row.id)}>Accept</button> 
+                                <button className="acc" onClick={(e) => accStatusHandler(e, row.id, row.ID)}>Accept</button> 
                                 <button className="rej" onClick={(e) => rejStatusHandler(e, row.id)}>Reject</button>
                              {/* </form> */}
                       </div>

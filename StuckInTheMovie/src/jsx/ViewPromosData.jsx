@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
-function ViewFacilities() {
+function ViewPromosData() {
 
     // const ExpandedComponent = ({data}) => {
     //    return (
@@ -23,7 +23,7 @@ function ViewFacilities() {
 
     const [data, setData] = useState([]);
     // const [q, setQ] = useState("");
-    const facilitiesRef = collection(db, "Facilities");
+    const facilitiesRef = collection(db, "PromosAndEvents");
 
     useEffect(() => {
         const getEmployees = async () => {
@@ -54,28 +54,28 @@ function ViewFacilities() {
             sortable: true
         },
         {
-          name: "EquipmentName",
-          selector: (row) => row.EquipmentName,
+            name: "PartnerID",
+            selector: (row) => row.PartnerID,
+            sortable: true
+        },
+        {
+          name: "Promo Name",
+          selector: (row) => row.Name,
           sortable: true,
-          width: "250px"
+          width: "200px"
         },
         {
-            name: "Department",
-            selector: (row) => row.Department,
+            name: "Discount Amount",
+            selector: (row) => (row.Amount + " %"),
             sortable: true,
-            width: "250px"
+            width: "150px"
+
         },
         {
-          name: "DateAdded",
-          selector: (row) => row.DateAdded,
+          name: "Valid Until",
+          selector: (row) => row.ValidUntil,
           sortable: true,
           width: "150px"
-        },
-        {
-            name: "Condition",
-            selector: (row) => row.Condition,
-            sortable: true,
-            width: "200px"
         },
         {
             width: "220px",
@@ -83,8 +83,8 @@ function ViewFacilities() {
             cell: (row) =>  {
                 return (
                     <div className="accOrReject">
-                            <button className="rej" onClick={(e) => handlePrint(e, ("Name: " + row.EquipmentName + ", ID: " + row.ID))}>Print QR</button>
-                           
+                            <button className="rej" onClick={(e) => handlePrint(e, ("PromoID: " + row.ID + ", DiscountAmount: " + row.Amount))}>Print QR</button>
+                  
                     </div>
                 )
           
@@ -99,7 +99,9 @@ function ViewFacilities() {
 
        return (
             <div className="expandInfo">
-              <div style={{ height: "auto", margin: "0 auto", maxWidth: 300, width: "100%" }}>
+            
+              <p className="expandP">Description: {data.data.Description}</p>
+              <div style={{ height: "100", margin: "0 auto", width: "100%", display:"flex", justifyContent: "flex-start"}}>
                     <QRCode
                     size={200}
                     style={{ height: "100px", maxWidth: "100%", width: "100%" }}
@@ -120,7 +122,7 @@ function ViewFacilities() {
 
             <div className="right">
                 <div className="title2">
-                    <h2 className="employeeList">Facility List</h2>
+                    <h2 className="employeeList">Promo and Event List</h2>
                 </div>
                 <div className="tablee">
                     <DataTable columns={columns} data={data} 
@@ -133,4 +135,4 @@ function ViewFacilities() {
     )
 }
 
-export default ViewFacilities;
+export default ViewPromosData;

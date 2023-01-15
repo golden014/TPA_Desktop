@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import QRCode from "react-qr-code";
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 
 const Print = () => {
     const location = useLocation();
@@ -9,11 +9,14 @@ const Print = () => {
     let temp = false;
     console.log(QRContent)
 
+    const history = useNavigate();
     useEffect(() => {
         if(temp == false) {
             window.print();
 
             temp = true;
+        } else {
+            history("/viewFacility");
         }
     });
 

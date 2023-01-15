@@ -191,6 +191,9 @@ function GenerateMovieSchedule() {
                 }
             }
         }
+
+        alert("Generate schedule from " + startDate +" to " + endDate + " success!");
+        
     }
 
     return (
@@ -201,13 +204,15 @@ function GenerateMovieSchedule() {
 
             <div className="right">
                 <h2>Available Movies</h2>
-                <DataTable columns={columns} data={moviesFiltered}
-                expandableRows
-                expandableRowsComponent={ExpandedComponent}
-                selectableRows
-                onSelectedRowsChange={handleRowSelected}
-                clearSelectedRows={toggleCleared}
-                />
+                <div className="tablee">
+                    <DataTable columns={columns} data={moviesFiltered}
+                    expandableRows
+                    expandableRowsComponent={ExpandedComponent}
+                    selectableRows
+                    onSelectedRowsChange={handleRowSelected}
+                    clearSelectedRows={toggleCleared}
+                    />
+                </div>
 
                 <div className="generateSchedule">
                     <p>Generate schedule from {startDate} to {endDate}</p>

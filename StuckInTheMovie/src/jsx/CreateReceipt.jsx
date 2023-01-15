@@ -86,7 +86,7 @@ const CreateReceipt = () => {
             window.print();
             temp = true;
         } else {
-            history("/addEmployee");
+            history("/viewTodaysSchedule");
         }
     }, []);
 

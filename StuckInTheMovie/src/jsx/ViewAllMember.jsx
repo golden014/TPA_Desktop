@@ -5,6 +5,7 @@ import {db} from "../firebase-config"
 import {collection, getDocs} from "firebase/firestore"
 import "../css/ViewEmployee.css"
 import  QRCode from "react-qr-code"
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -19,6 +20,15 @@ function ViewAllMember() {
     //         </div>
     //    )
     // };
+    const history = useNavigate();
+
+    const handlePrint = (e, content) => {
+        e.preventDefault();
+
+        const QRContent = content;
+  
+        history('/print', {state: {identifier: QRContent}});
+    }
 
     const [data, setData] = useState([]);
     // const [q, setQ] = useState("");
@@ -64,25 +74,39 @@ function ViewAllMember() {
             name: "Date Join",
             selector: (row) => row.DateJoin,
             sortable: true,
+        },
+        {
+            width: "220px",
+            name: "Action",
+            cell: (row) =>  {
+                return (
+                    <div className="accOrReject">
+                            <button className="rej" onClick={(e) => handlePrint(e, ("MemberID: " + row.ID + ", Name: " + row.MemberName))}>Print QR</button>
+                    </div>
+                )
+          
+                
+            }
+            
         }
     ]
 
-    // const ExpandedComponent = (data) => {
-    //     console.log(data.data);
+    const ExpandedComponent = (data) => {
+        console.log(data.data);
 
-    //    return (
-    //         <div className="expandInfo">
-    //           <div style={{ height: "auto", margin: "0 auto", maxWidth: 300, width: "100%" }}>
-    //                 <QRCode
-    //                 size={500}
-    //                 style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-    //                 value={"ID: " + data.data.ID + ", Name: " + data.data.EquipmentName}
-    //                 viewBox={`0 0 256 256`}
-    //                 />
-    //             </div>
-    //         </div>
-    //    )
-    // };
+       return (
+            <div className="expandInfo">
+              <div style={{ height: "auto", margin: "0 auto", maxWidth: 300, width: "100%" }}>
+                    <QRCode
+                    size={200}
+                    style={{ height: "100px", maxWidth: "100%", width: "100%" }}
+                    value={"MemberID: " + data.data.ID + ", Name: " + data.data.MemberName}
+                    viewBox={`0 0 256 256`}
+                    />
+                </div>
+            </div>
+       )
+    };
 
 
     return(
@@ -97,6 +121,8 @@ function ViewAllMember() {
                 </div>
                 <div className="tablee">
                     <DataTable columns={columns} data={data} 
+                    expandableRows
+                    expandableRowsComponent={ExpandedComponent}
                     />
                 </div>
             </div>
